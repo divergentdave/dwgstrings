@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 import dxfgrabber
 import os
 import os.path
