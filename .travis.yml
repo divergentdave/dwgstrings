@@ -12,7 +12,7 @@ script:
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034594.dxf >/dev/null
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034926.dxf >/dev/null
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_035194.dxf >/dev/null
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && PYTHONIOENCODING=utf-8 dwgstrings samples/ny-eng-ewp.580t.dwg >/dev/null || false'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && PYTHONIOENCODING=utf-8 dwgstrings samples/ny-eng-ewp-580t.dwg >/dev/null || false'
 notifications:
     email:
         recipients:
