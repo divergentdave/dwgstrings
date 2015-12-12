@@ -9,10 +9,10 @@ install:
     - python setup.py install
 script:
     - flake8 setup.py dwgstrings
-    - dwgstrings samples/nrcs141p2_034594.dxf >/dev/null
-    - dwgstrings samples/nrcs141p2_034926.dxf >/dev/null
-    - dwgstrings samples/nrcs141p2_035194.dxf >/dev/null
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && dwgstrings samples/ny-eng-ewp.580t.dwg >/dev/null || false'
+    - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034594.dxf >/dev/null
+    - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034926.dxf >/dev/null
+    - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_035194.dxf >/dev/null
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && PYTHONIOENCODING=utf-8 dwgstrings samples/ny-eng-ewp.580t.dwg >/dev/null || false'
 notifications:
     email:
         recipients:
