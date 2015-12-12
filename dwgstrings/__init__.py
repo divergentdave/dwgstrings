@@ -5,11 +5,7 @@ import shutil
 import subprocess
 import tempfile
 
-CONVERTER_LOCATION = os.path.join(os.environ['PROGRAMFILES'],
-                                  "ODA",
-                                  "Teigha Viewer 4.00.1",
-                                  "TeighaFileConverter.exe")
-
+from . import teigha_file_converter
 
 def parse(path):
     _, extension = os.path.splitext(path)
@@ -21,8 +17,9 @@ def parse(path):
         output_basename = os.path.splitext(input_basename)[0] + '.dxf'
         temp_directory = tempfile.mkdtemp()
         output_path = os.path.join(temp_directory, output_basename)
+        converter_location = teigha_file_converter.find_teigha()
         try:
-            subprocess.check_call([CONVERTER_LOCATION,
+            subprocess.check_call([converter_location,
                                    input_directory, temp_directory,
                                    'ACAD2010', 'DXF',
                                    '0',  # recurse
