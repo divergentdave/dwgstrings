@@ -52,4 +52,5 @@ def main():
       for attrib in entity.attribs:
         print attrib.text
 
-main()
+if __name__ == '__main__':
+  main()
