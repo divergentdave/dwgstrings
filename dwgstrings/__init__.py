@@ -4,7 +4,6 @@ import os
 import os.path
 import shutil
 import subprocess
-import sys
 import tempfile
 
 CONVERTER_LOCATION = os.path.join(os.environ['PROGRAMFILES'], "ODA", "Teigha Viewer 4.00.1", "TeighaFileConverter.exe")

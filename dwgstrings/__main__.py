@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 from . import dump_text
 
 def main():
