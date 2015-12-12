@@ -3,7 +3,7 @@ sudo: true
 before_install:
     - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --user "travis-user" --password "${FILE_PASS}" "https://davidsherenowitsa.party/dwg-ci-private/TeighaFileConverter_QT5_lnxX64_4.7dll.deb" || false'
     - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo dpkg -i TeighaFileConverter_QT5_lnxX64_4.7dll.deb || false'
-    - dpkg-query -c TeighaFileConverter_QT5_lnxX64_4.7dll.deb
+    - dpkg-query -L teighafileconverter
 install:
     - pip install -r requirements.txt
     - pip install flake8
