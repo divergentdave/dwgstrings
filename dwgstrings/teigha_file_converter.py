@@ -22,9 +22,7 @@ def find_teigha():
     if sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
         return find_teigha_windows()
     elif sys.platform.startswith('linux'):
-        raise NotImplementedError("Help is needed finding Teigha's install "
-                                  "location on Linux. Please get in touch via "
-                                  "the GitHub issue tracker.")
+        return "TeighaViewer"
     elif sys.platform.startswith('darwin'):
         raise NotImplementedError("Help is needed finding Teigha's install "
                                   "location on OS X. Please get in touch via "
