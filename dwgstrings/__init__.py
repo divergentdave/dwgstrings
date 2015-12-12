@@ -1,4 +1,5 @@
 import dxfgrabber
+import errno
 import os
 import os.path
 import shutil
@@ -6,6 +7,7 @@ import subprocess
 import tempfile
 
 from . import teigha_file_converter
+from . import exceptions
 
 
 def parse(path):
@@ -31,6 +33,11 @@ def parse(path):
             else:
                 raise Exception("Conversion failed, %s was not found" %
                                 output_path)
+        except EnvironmentError as e:
+            if e.errno == errno.ENOENT:
+                raise exceptions.TeighaNotInstalledError()
+            else:
+                raise e
         finally:
             shutil.rmtree(temp_directory)
     else:

@@ -1,0 +1,2 @@
+class TeighaNotInstalledError(Exception):
+    pass

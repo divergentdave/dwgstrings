@@ -1,6 +1,8 @@
 import os
 import sys
 
+from . import exceptions
+
 
 def find_teigha_windows():
     candidates = []
@@ -12,6 +14,9 @@ def find_teigha_windows():
             exe = os.path.join(subdir, "TeighaFileConverter.exe")
             if os.path.isfile(exe):
                 candidates.append(exe)
+
+    if len(candidates) == 0:
+        raise exceptions.TeighaNotInstalledError()
 
     # TODO: This won't correctly compare version number components with
     # different numbers of digits
