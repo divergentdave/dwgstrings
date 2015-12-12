@@ -7,6 +7,7 @@ import tempfile
 
 from . import teigha_file_converter
 
+
 def parse(path):
     _, extension = os.path.splitext(path)
     extension = extension.lower()

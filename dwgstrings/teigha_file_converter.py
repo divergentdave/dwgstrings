@@ -1,6 +1,7 @@
 import os
 import sys
 
+
 def find_teigha_windows():
     candidates = []
     program_files = os.environ['PROGRAMFILES']
@@ -15,6 +16,7 @@ def find_teigha_windows():
     # TODO: This won't correctly compare version number components with
     # different numbers of digits
     return max(candidates)
+
 
 def find_teigha():
     if sys.platform.startswith('win32') or sys.platform.startswith('cygwin'):
