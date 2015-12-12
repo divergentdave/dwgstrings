@@ -1,12 +1,25 @@
 language: python
-sudo: false
+sudo: true
+before_install:
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --user "travis-user" --password "${FILE_PASS}" "https://davidsherenowitsa.party/dwg-ci-private/TeighaFileConverter_QT5_lnxX86_4.7dll.deb" || false'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo dpkg -i TeighaFileConverter_QT5_lnxX86_4.7dll.deb || false'
 install:
     - pip install -r requirements.txt
     - pip install flake8
-script: flake8 setup.py dwgstrings
+    - python setup.py install
+script:
+    - flake8 setup.py dwgstrings
+    - dwgstrings samples/nrcs141p2_034594.dxf >/dev/null
+    - dwgstrings samples/nrcs141p2_034926.dxf >/dev/null
+    - dwgstrings samples/nrcs141p2_035194.dxf >/dev/null
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && dwgstrings samples/ny-eng-ewp.580t.dwg >/dev/null || false'
 notifications:
     email:
         recipients:
             - divergentdave@gmail.com
         on_success: change
         on_failure: change
+
+env:
+    global:
+        secure: "bDz8KFv5P9Sn6Biul8TMB8f08VNGV3B9UgXJTt3h/CJMzPrz6oJ4Zl98AKNqVrM0ZtIGBuDt5GqkRMGA7Rz8frWrhtL+Y/JhqVIS6LVYEidi5PYGOc4P37gw9OcQg2x1CYyUJou8Y2orIkQJSTisFqyYgrj6PAozbwPnIq8ntD6xE8BCIMf0iSBTDrqmJxlW0/WmGA/UpZWk5TlPLEz4hzWpo4bsRHV2h/6k2V2ULPyacU+Q8k07bWUG6+rHmi76ND4HXgoNXWCf7ibIZ1/N19sFSgH3gKsKjWjdNkWbAbHE2HOS6BglixYY7SGovtJA0fcXf3tLALVWBG/DVvXZRZyT7ufvCl0heo7Qe2D3V0fcsITZbCeKe5Wg36GhvE+nWCspgMJl50wHvHZUJZXj24jsa2BcuaG7NZ5m0z6LYAW5WYxIlmhaz83CKvZylb0MVZ+D1PHUkntaDLMvRLoLTkV2df7xnhkk5mej/jUnkKzPEIcu2jIz2qFVDz6xYOuGTGplA0ydoqn11YZdGzHfonh1t4f4WTerz/nrAYJf/TRIBuI3+5JGlV0sPcibwC3HJa1ImwOzX+yxIVjS58ERZ3AjhH1Yt+Lq1KHZcPOp3FGZNuTnybBb67LsWK65OtAVGkZXJQf974xbmaR1PjhjJjZlxAGymn/vL4XfebDVkn0="
