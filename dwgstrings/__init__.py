@@ -35,13 +35,8 @@ def parse(path):
   else:
     raise Exception("Unsupported filetype: %s" % extension)
 
-def main():
-  if len(sys.argv) != 2:
-    print "Usage: %s file.dwg or %s file.dxf" % (sys.argv[0], sys.argv[0])
-    sys.exit(1)
-
-  drawing = parse(sys.argv[1])
-
+def dump_text(path):
+  drawing = parse(path)
   print "Dumping text entities"
   for entity in drawing.entities:
     if entity.dxftype == "TEXT":
@@ -51,6 +46,3 @@ def main():
     elif entity.dxftype == "INSERT":
       for attrib in entity.attribs:
         print attrib.text
-
-if __name__ == '__main__':
-  main()
