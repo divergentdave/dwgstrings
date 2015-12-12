@@ -3,6 +3,7 @@
 import sys
 from . import dump_text
 
+
 def main():
     if len(sys.argv) != 2:
         print "Usage: %s file.dwg or %s file.dxf" % (sys.argv[0], sys.argv[0])

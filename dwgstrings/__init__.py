@@ -6,7 +6,11 @@ import shutil
 import subprocess
 import tempfile
 
-CONVERTER_LOCATION = os.path.join(os.environ['PROGRAMFILES'], "ODA", "Teigha Viewer 4.00.1", "TeighaFileConverter.exe")
+CONVERTER_LOCATION = os.path.join(os.environ['PROGRAMFILES'],
+                                  "ODA",
+                                  "Teigha Viewer 4.00.1",
+                                  "TeighaFileConverter.exe")
+
 
 def parse(path):
     _, extension = os.path.splitext(path)
@@ -22,17 +26,19 @@ def parse(path):
             subprocess.check_call([CONVERTER_LOCATION,
                                    input_directory, temp_directory,
                                    'ACAD2010', 'DXF',
-                                   '0', # recurse
-                                   '1', #audit dwg files
+                                   '0',  # recurse
+                                   '1',  # audit dwg files
                                    input_basename])
             if os.path.exists(output_path):
                 return dxfgrabber.readfile(output_path)
             else:
-                raise Exception("Conversion failed, %s was not found" % output_path)
+                raise Exception("Conversion failed, %s was not found" %
+                                output_path)
         finally:
             shutil.rmtree(temp_directory)
     else:
         raise Exception("Unsupported filetype: %s" % extension)
+
 
 def dump_text(path):
     drawing = parse(path)
