@@ -29,9 +29,7 @@ def find_teigha():
     elif sys.platform.startswith('linux'):
         return "/usr/bin/TeighaFileConverter"
     elif sys.platform.startswith('darwin'):
-        raise NotImplementedError("Help is needed finding Teigha's install "
-                                  "location on OS X. Please get in touch via "
-                                  " the GitHub issue tracker.")
+        return "/Applications/TeighaFileConverter.app"
     else:
         raise NotImplementedError("Teigha File Converter is only distributed "
                                   "for Windows, Mac OS X, and Linux")
