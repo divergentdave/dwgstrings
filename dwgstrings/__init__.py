@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import dxfgrabber
 import errno
 import os
@@ -46,12 +48,12 @@ def parse(path):
 
 def dump_text(path):
     drawing = parse(path)
-    print "Dumping text entities"
+    print("Dumping text entities")
     for entity in drawing.entities:
         if entity.dxftype == "TEXT":
-            print entity.text
+            print(entity.text)
         elif entity.dxftype == "MTEXT":
-            print entity.plain_text()
+            print(entity.plain_text())
         elif entity.dxftype == "INSERT":
             for attrib in entity.attribs:
-                print attrib.text
+                print(attrib.text)
