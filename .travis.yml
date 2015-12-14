@@ -1,11 +1,11 @@
 language: python
 sudo: true
 before_install:
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --user "travis-user" --password "${FILE_PASS}" "https://davidsherenowitsa.party/dwg-ci-private/TeighaFileConverter_QT5_lnxX64_4.7dll.deb" || false'
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y || false'
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo apt-get update -q || false'
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo apt-get install libqt5widgets5 -y || false'
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo dpkg -i TeighaFileConverter_QT5_lnxX64_4.7dll.deb || false'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && wget --user "travis-user" --password "${FILE_PASS}" "https://davidsherenowitsa.party/dwg-ci-private/TeighaFileConverter_QT5_lnxX64_4.7dll.deb" || true'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y || true'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo apt-get update -q || true'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo apt-get install libqt5widgets5 -y || true'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && sudo dpkg -i TeighaFileConverter_QT5_lnxX64_4.7dll.deb || true'
 install:
     - pip install -r requirements.txt
     - pip install flake8
@@ -19,7 +19,7 @@ script:
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034594.dxf >/dev/null
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_034926.dxf >/dev/null
     - PYTHONIOENCODING=utf-8 dwgstrings samples/nrcs141p2_035194.dxf >/dev/null
-    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && PYTHONIOENCODING=utf-8 dwgstrings samples/ny-eng-ewp-580t.dwg >/dev/null || false'
+    - '[ "${TRAVIS_PULL_REQUEST}" = "false" ] && PYTHONIOENCODING=utf-8 dwgstrings samples/ny-eng-ewp-580t.dwg >/dev/null || true'
 notifications:
     email:
         recipients:
