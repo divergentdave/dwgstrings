@@ -1,2 +1,2 @@
 # dwgstrings
-Strings for AutoCAD files
+Strings for AutoCAD files!
